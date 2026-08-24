@@ -1,0 +1,457 @@
+import { PartItem, DiagnosticIssue, Testimonial, KitStage } from '../types';
+
+export const COSTA_VERDE_CITIES = [
+  { name: 'Mangaratiba', districts: ['Centro', 'Conceição de Jacareí', 'Muriqui', 'Itacuruçá', 'Praia do Saco', 'Serra do Piloto'] },
+  { name: 'Angra dos Reis', districts: ['Centro', 'Jacuecanga', 'Verolme', 'Frade', 'Praia Grande', 'Bonfim'] },
+  { name: 'Itaguaí', districts: ['Centro', 'Chaperó', 'Coroa Grande', 'Brisamar'] },
+  { name: 'Paraty', districts: ['Centro Histórico', 'Jabaquara', 'Caborê', 'Paraty-Mirim'] },
+];
+
+export const DISTRICT_DELIVERY_INFO = [
+  { district: 'Mangaratiba Centro & Praia do Saco', rule: 'Frete Grátis acima de R$ 300', estimate: 'Pronta Entrega / Pronta Retirada', badge: 'Retirada ou 2h' },
+  { district: 'Muriqui & Itacuruçá', rule: 'Entregas diárias (Turno da Manhã)', estimate: 'Entrega em até 24h', badge: 'Diário' },
+  { district: 'Conceição de Jacareí', rule: 'Entregas programadas (Terças e Quintas)', estimate: 'Agendamento Direto', badge: 'Programado' },
+  { district: 'Serra do Piloto & Zona Rural', rule: 'Entrega via Caminhão Munck / Basculante', estimate: 'Sob Consulta Logística', badge: 'Especial' },
+];
+
+export const WHATSAPP_CHANNELS = [
+  { id: 'balcao', label: 'Balcão de Vendas (Mangaratiba)', desc: 'Tirar dúvidas de produtos, estoque e pronta retirada na loja', phone: '5521990387232' },
+  { id: 'b2b', label: 'Atendimento Obras & Construtoras (B2B)', desc: 'Cotação de grandes volumes, faturamento CNPJ e lista de materiais', phone: '5521990387232' },
+  { id: 'logistica', label: 'Entregas & Frete na Obra', desc: 'Confirmar horário de entrega de caminhão munck/basculante', phone: '5521990387232' },
+];
+
+export const KITS_ETAPAS: KitStage[] = [
+  {
+    id: 'fundacao',
+    title: 'Kit Fundação & Estrutura',
+    icon: '🏗️',
+    description: 'Insumos essenciais para sapatas, colunas, vigas e laje com máxima resistência.',
+    estimatedPrice: 650.00,
+    items: [
+      { name: 'Cimento Portland 50kg (10 sacos)', qty: '10 sacos', price: 420.00 },
+      { name: 'Areia Média Saca 20kg (15 sacas)', qty: '15 sacas', price: 148.50 },
+      { name: 'Impermeabilizante Vedacit 18L', qty: '1 galão', price: 81.50 },
+    ],
+  },
+  {
+    id: 'hidraulica',
+    title: 'Kit Hidráulica Água Fria & Esgoto',
+    icon: '💧',
+    description: 'Tubulações, conexões, cola e vedantes para padrão residencial.',
+    estimatedPrice: 380.00,
+    items: [
+      { name: 'Tubo PVC Soldável 25mm 6m (5 barras)', qty: '5 barras', price: 144.50 },
+      { name: 'Joelho 90° PVC Soldável 25mm (10 un)', qty: '10 un', price: 29.00 },
+      { name: 'Caixa d\'Água Polietileno 500L', qty: '1 unidade', price: 289.00 },
+    ],
+  },
+  {
+    id: 'eletrica',
+    title: 'Kit Entrada de Energia & Padrão',
+    icon: '⚡',
+    description: 'Fiação flexível, disjuntores e caixas normatizadas para Costa Verde.',
+    estimatedPrice: 290.00,
+    items: [
+      { name: 'Cabo Flexível 2,5mm² Rolo 100m Amarelo', qty: '1 rolo', price: 189.00 },
+      { name: 'Disjuntor Bipolar 40A Curva C (2 un)', qty: '2 un', price: 65.00 },
+      { name: 'Tomadas 2P+T 10A (4 un)', qty: '4 un', price: 35.60 },
+    ],
+  },
+  {
+    id: 'pintura',
+    title: 'Kit Pintura Externa Anti-Maresia',
+    icon: '🎨',
+    description: 'Tinta acrílica seladora com barreira protetora contra corrosão litorânea.',
+    estimatedPrice: 340.00,
+    items: [
+      { name: 'Tinta Acrílica Standard 18L Branco', qty: '1 lata 18L', price: 259.00 },
+      { name: 'Rolo de Lã 23cm com Cabo', qty: '2 unidades', price: 49.80 },
+      { name: 'Fita Crepe Alta Aderência 48mm', qty: '3 rolos', price: 31.20 },
+    ],
+  },
+];
+
+export const DEPARTMENTS = [
+  { key: 'hidraulica', label: 'Hidráulica', icon: '💧' },
+  { key: 'eletrica', label: 'Elétrica', icon: '⚡' },
+  { key: 'ferragens', label: 'Ferragens', icon: '🔩' },
+  { key: 'ferramentas', label: 'Ferramentas', icon: '🔧' },
+  { key: 'pintura', label: 'Pintura', icon: '🎨' },
+  { key: 'materiais-basicos', label: 'Materiais Básicos', icon: '🧱' },
+  { key: 'loucas-ac', label: 'Louças e Acessórios', icon: '🚿' },
+  { key: 'pisos-forros', label: 'Pisos, Forros e Telhas', icon: '🏠' },
+  { key: 'iluminacao', label: 'Iluminação', icon: '💡' },
+  { key: 'epi', label: 'EPI e Segurança', icon: '🦺' },
+  { key: 'jardim', label: 'Casa e Jardim', icon: '🌿' },
+  { key: 'impermeabilizantes', label: 'Impermeabilizantes', icon: '🛡️' },
+];
+
+export const SERVICE_EQUIPMENTS = [
+  {
+    key: 'Entrega de Materiais',
+    label: 'Entrega de Materiais',
+    emoji: '🚚',
+    services: [
+      'Consulta de Frete por Bairro',
+      'Entrega Local em Mangaratiba',
+      'Entrega na Obra com Munck',
+      'Agendamento de Entrega Basculante',
+      'Retirada Pronta no Balcão',
+    ],
+  },
+  {
+    key: 'Consultoria para Obras',
+    label: 'Consultoria para Obras',
+    emoji: '📐',
+    services: [
+      'Cotação por Lista de Materiais',
+      'Cálculo de Insumos por m²',
+      'Orçamento Detalhado em PDF',
+      'Atendimento Faturamento CNPJ',
+    ],
+  },
+  {
+    key: 'Serviços para Projetos',
+    label: 'Serviços para Projetos',
+    emoji: '🏗️',
+    services: [
+      'Levantamento de Necessidades',
+      'Orçamento de Serviço',
+      'Execução de Reformas',
+      'Acompanhamento de Obra',
+      'Indicação de Empreiteiros Parceiros',
+    ],
+  },
+  {
+    key: 'Outros Serviços',
+    label: 'Outros Serviços',
+    emoji: '🛠️',
+    services: [
+      'Corte de Madeira e Metal',
+      'Reserva de Material na Loja',
+      'Troca e Devolução Facilitada',
+      'Assistência Pós-venda',
+    ],
+  },
+];
+
+export const getServicesForEquipment = (equipmentKey: string): string[] => {
+  const found = SERVICE_EQUIPMENTS.find(e => e.key === equipmentKey);
+  return found ? found.services : ['Orçamento', 'Visita Técnica'];
+};
+
+export const BRANDS = [
+  'Tigre',
+  'Amanco',
+  'Deca',
+  'Lorenzetti',
+  'Tramontina',
+  'Vonder',
+  'Bosch',
+  'Suvinil',
+  'Coral',
+  '3M',
+  'Fortlev',
+  'Eletromar',
+  'Gerdau',
+  'Ciser',
+  'Vedacit',
+];
+
+export const PARTS_LIST: PartItem[] = [
+  // Hidráulica
+  {
+    id: 'hid-01',
+    name: 'Tubo PVC Soldável 20mm x 6m',
+    category: 'hidraulica',
+    subcategory: 'Tubos PVC',
+    description: 'Tubo de PVC para água fria, pressão 10 bar. Barra com 6 metros. Ideal para instalações residenciais e prediais.',
+    code: 'TUB-PVC-20-6M',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Tigre', 'Amanco', 'Fortlev'],
+    price: 28.90,
+    wholesalePrice: 24.50,
+    wholesaleMinQty: 10,
+    unitLabel: 'barra 6m',
+    antiMaresia: true,
+    rating: 4.8,
+    reviewsCount: 120
+  },
+  {
+    id: 'hid-02',
+    name: 'Joelho 90° PVC Soldável 25mm',
+    category: 'hidraulica',
+    subcategory: 'Conexões PVC',
+    description: 'Conexão cotovelo 90 graus em PVC para tubulação de água fria. Vedação perfeita e alta durabilidade.',
+    code: 'JOI-PVC-25-90',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Tigre', 'Amanco'],
+    price: 14.50,
+    wholesalePrice: 11.90,
+    wholesaleMinQty: 20,
+    unitLabel: 'pacote 10un',
+    antiMaresia: true,
+    rating: 4.7,
+    reviewsCount: 85
+  },
+  {
+    id: 'hid-03',
+    name: 'Caixa d\'Água Polietileno 500L',
+    category: 'hidraulica',
+    subcategory: 'Caixas e Reservatórios',
+    description: 'Caixa d\'água em polietileno com tampa e entrada de ar. Resistente a UV, impacto e sol da Costa Verde.',
+    code: 'CXA-PE-500L',
+    availability: 'Entrega em até 24h',
+    compatibleBrands: ['Fortlev', 'Amanco'],
+    price: 289.00,
+    wholesalePrice: 265.00,
+    wholesaleMinQty: 3,
+    unitLabel: 'unidade',
+    antiMaresia: true,
+    rating: 4.9,
+    reviewsCount: 56
+  },
+  {
+    id: 'hid-04',
+    name: 'Válvula de Esfera 3/4" Latão Inox',
+    category: 'hidraulica',
+    subcategory: 'Registros e Válvulas',
+    description: 'Válvula de esfera em latão reforçado com esfera em aço inox. Alta resistência à oxidação salina da praia.',
+    code: 'VAL-ESF-34',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Deca', 'Fabrimar'],
+    price: 45.90,
+    wholesalePrice: 39.90,
+    wholesaleMinQty: 5,
+    unitLabel: 'unidade',
+    antiMaresia: true,
+    rating: 4.8,
+    reviewsCount: 92
+  },
+
+  // Elétrica
+  {
+    id: 'ele-01',
+    name: 'Cabo Flexível 2,5mm² Rolo 100m Amarelo',
+    category: 'eletrica',
+    subcategory: 'Fios e Cabos',
+    description: 'Cabo flexível 750V, classe 5, para instalações elétricas residenciais e comerciais. Disponível por metro ou rolo.',
+    code: 'CAB-FLX-25-AM',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Eletromar', 'Sil', 'Cobrecom'],
+    price: 189.00,
+    wholesalePrice: 172.00,
+    wholesaleMinQty: 3,
+    unitLabel: 'rolo 100m (ou R$ 2,10/m)',
+    antiMaresia: false,
+    rating: 4.9,
+    reviewsCount: 210
+  },
+  {
+    id: 'ele-02',
+    name: 'Disjuntor Bipolar 40A Curva C',
+    category: 'eletrica',
+    subcategory: 'Disjuntores',
+    description: 'Disjuntor termomagnético bipolar 40A para proteção de circuitos de força e ar-condicionado.',
+    code: 'DIS-2P-40A',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Siemens', 'Schneider', 'ABB'],
+    price: 32.50,
+    wholesalePrice: 27.90,
+    wholesaleMinQty: 5,
+    unitLabel: 'unidade',
+    antiMaresia: true,
+    rating: 4.8,
+    reviewsCount: 74
+  },
+  {
+    id: 'ele-03',
+    name: 'Refletor LED 50W IP66 Externa Anti-Maresia',
+    category: 'eletrica',
+    subcategory: 'Iluminação Externa',
+    description: 'Refletor blindado 50W luz fria, proteção IP66 contra chuva, maresia e umidade litorânea.',
+    code: 'REF-LED-50W-EXT',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Philips', 'Intelbras'],
+    price: 79.90,
+    wholesalePrice: 69.90,
+    wholesaleMinQty: 4,
+    unitLabel: 'unidade',
+    antiMaresia: true,
+    rating: 4.9,
+    reviewsCount: 88
+  },
+
+  // Ferragens
+  {
+    id: 'fer-01',
+    name: 'Parafuso Inox 316 4,5 x 50mm Pacote 50un (Anti-Maresia)',
+    category: 'ferragens',
+    subcategory: 'Parafusos',
+    description: 'Parafuso em aço inox 316 marítimo, à prova de ferrugem e maresia. Pacote com 50 unidades.',
+    code: 'PAR-INOX-316',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Ciser', 'Bemfixa'],
+    price: 34.00,
+    wholesalePrice: 29.00,
+    wholesaleMinQty: 5,
+    unitLabel: 'pacote 50un',
+    antiMaresia: true,
+    rating: 4.9,
+    reviewsCount: 63
+  },
+  {
+    id: 'fer-02',
+    name: 'Fechadura Externa Aço Inox Escovado',
+    category: 'ferragens',
+    subcategory: 'Fechaduras',
+    description: 'Fechadura para porta externa com espelho e maçaneta em aço inox 304 anti-corrosão.',
+    code: 'FEC-INOX-EXT',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Pado', 'Papaiz', 'Stam'],
+    price: 119.00,
+    wholesalePrice: 105.00,
+    wholesaleMinQty: 3,
+    unitLabel: 'unidade',
+    antiMaresia: true,
+    rating: 4.8,
+    reviewsCount: 41
+  },
+
+  // Ferramentas
+  {
+    id: 'ferr-01',
+    name: 'Furadeira/Parafusadeira 12V com Bateria',
+    category: 'ferramentas',
+    subcategory: 'Ferramentas Elétricas',
+    description: 'Parafusadeira e furadeira a bateria 12V com mandril 3/8" e carregador bivolt.',
+    code: 'FUR-12V-BAT',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Bosch', 'Makita', 'Vonder'],
+    price: 349.00,
+    wholesalePrice: 319.00,
+    wholesaleMinQty: 2,
+    unitLabel: 'unidade',
+    antiMaresia: false,
+    rating: 4.8,
+    reviewsCount: 110
+  },
+
+  // Pintura
+  {
+    id: 'pin-01',
+    name: 'Tinta Acrílica Premium Proteção Litoral 18L Branco',
+    category: 'pintura',
+    subcategory: 'Tintas',
+    description: 'Tinta acrílica de alta performance com aditivo antimofo e proteção UV anti-maresia.',
+    code: 'TIN-ACR-18L-BR',
+    availability: 'Entrega em até 24h',
+    compatibleBrands: ['Suvinil', 'Coral', 'Lukscolor'],
+    price: 269.00,
+    wholesalePrice: 245.00,
+    wholesaleMinQty: 4,
+    unitLabel: 'lata 18L',
+    antiMaresia: true,
+    rating: 4.9,
+    reviewsCount: 145
+  },
+
+  // Materiais básicos
+  {
+    id: 'mat-01',
+    name: 'Cimento Portland CP-II 50kg',
+    category: 'materiais-basicos',
+    subcategory: 'Cimento e Argamassa',
+    description: 'Cimento Portland CP-II de alta resistência para fundações, pilares e alvenaria. Sacaria 50kg.',
+    code: 'CIM-50KG',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Votorantim', 'CSN', 'Tupi'],
+    price: 42.00,
+    wholesalePrice: 38.90,
+    wholesaleMinQty: 20,
+    unitLabel: 'saco 50kg',
+    antiMaresia: false,
+    rating: 4.8,
+    reviewsCount: 300
+  },
+  {
+    id: 'mat-02',
+    name: 'Areia Média Saca 20kg',
+    category: 'materiais-basicos',
+    subcategory: 'Areia e Brita',
+    description: 'Areia média lavada e peneirada para argamassa e contrapiso. Sacada com 20kg.',
+    code: 'ARE-MED-20KG',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Trevos Logística'],
+    price: 9.90,
+    wholesalePrice: 8.50,
+    wholesaleMinQty: 15,
+    unitLabel: 'saca 20kg',
+    antiMaresia: false,
+    rating: 4.5,
+    reviewsCount: 200
+  },
+
+  // Impermeabilizantes
+  {
+    id: 'imp-01',
+    name: 'Manta Asfáltica Aluminizada 3mm Rolo 1m x 10m',
+    category: 'impermeabilizantes',
+    subcategory: 'Mantas',
+    description: 'Manta asfáltica aluminizada para impermeabilização de lajes, calhas e telhados expostos ao sol.',
+    code: 'MAN-ASF-3MM',
+    availability: 'Pronta Retirada na Loja',
+    compatibleBrands: ['Vedacit', 'Pluvitec'],
+    price: 189.00,
+    wholesalePrice: 169.00,
+    wholesaleMinQty: 3,
+    unitLabel: 'rolo 10m²',
+    antiMaresia: true,
+    rating: 4.7,
+    reviewsCount: 45
+  },
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: 'test-01',
+    name: 'Carlos Henrique (Construtora Costa Verde)',
+    role: 'Engenheiro Civil',
+    location: 'Mangaratiba, RJ',
+    content: 'A Trevos tem sido nosso fornecedor principal em Mangaratiba. Entrega rápida com munck na obra, sacaria de cimento com preço de atacado e cotação via WhatsApp em minutos.',
+    rating: 5,
+    date: '15 Jul 2026',
+    verified: true,
+  },
+  {
+    id: 'test-02',
+    name: 'Mariana Lopes',
+    role: 'Dona de Casa / Reforma Residencial',
+    location: 'Conceição de Jacareí, RJ',
+    content: 'Fiz a reforma da casa comprando a linha anti-maresia na Trevos. Me ajudaram a calcular a metragem de piso e tinta e entregaram tudo no dia certo na minha casa.',
+    rating: 5,
+    date: '02 Ago 2026',
+    verified: true,
+  },
+  {
+    id: 'test-03',
+    name: 'João Pedro Menezes',
+    role: 'Mestre de Obra / Empreiteiro',
+    location: 'Muriqui, RJ',
+    content: 'Sempre que preciso de material urgente no canteiro de obra, tiro uma foto da lista no caderno e mando no WhatsApp da Trevos. Em menos de 2h o caminhão encosta.',
+    rating: 5,
+    date: '10 Ago 2026',
+    verified: true,
+  },
+  {
+    id: 'test-04',
+    name: 'Fernanda Ribeiro',
+    role: 'Arquiteta',
+    location: 'Itaguaí, RJ',
+    content: 'Indico a Trevos para meus clientes por serem a única loja de materiais de Mangaratiba com orçamentador em PDF e opções de pronta entrega na obra.',
+    rating: 5,
+    date: '18 Ago 2026',
+    verified: true,
+  },
+];
+

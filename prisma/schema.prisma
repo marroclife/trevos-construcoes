@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id               String      @id @default(uuid())
+  name             String
+  description      String      @default("")
+  category         String
+  subcategory      String      @default("")
+  code             String      @unique
+  price            Decimal     @db.Decimal(10, 2)
+  stock            Int         @default(0)
+  compatibleBrands String[]    @default([])
+  imageUrl         String?     @default("")
+  isVisible        Boolean     @default(true)
+  featured         Boolean     @default(false)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  orderItems       OrderItem[]
+
+  @@index([category])
+  @@index([subcategory])
+  @@index([isVisible])
+  @@index([code])
+  @@map("products")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  type      String   @default("outros")
+  createdAt DateTime @default(now())
+
+  @@map("categories")
+}
+
+model Brand {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("brands")
+}
+
+model Order {
+  id                String        @id @default(uuid())
+  orderNumber       String        @unique @default(dbgenerated("(('FCS-'::text || to_char(now(), 'YYYY-'::text)) || lpad((floor((random() * (1000000)::double precision)))::text, 6, '0'::text))"))
+  customerName      String
+  customerPhone     String
+  customerEmail     String
+  city              String
+  district          String?
+  address           String?
+  deliveryMethod    String        @default("delivery")
+  shippingFee       Decimal       @default(0) @db.Decimal(10, 2)
+  subtotal          Decimal       @db.Decimal(10, 2)
+  total             Decimal       @db.Decimal(10, 2)
+  paymentMethod     String        @default("pix")
+  paymentStatus     PaymentStatus @default(PENDING)
+  externalPaymentId String?
+  status            OrderStatus   @default(APPROVED)
+  notes             String?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  items             OrderItem[]
+
+  @@index([customerPhone])
+  @@index([customerEmail])
+  @@index([paymentStatus])
+  @@index([status])
+  @@index([createdAt])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String
+  name      String
+  code      String
+  quantity  Int
+  price     Decimal @db.Decimal(10, 2)
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@index([orderId])
+  @@map("order_items")
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String   @default("Administrador")
+  createdAt DateTime @default(now())
+
+  @@map("admins")
+}
+
+enum PaymentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REFUNDED
+
+  @@map("payment_status")
+}
+
+enum OrderStatus {
+  APPROVED
+  PREPARING
+  SHIPPED
+  DELIVERED
+  READY_FOR_PICKUP
+  CANCELED
+
+  @@map("order_status")
+}

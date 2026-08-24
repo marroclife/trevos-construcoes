@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Trevo de 4 folhas estilizado -->
+  <g stroke="#14532d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Caule -->
+    <path d="M100 170 Q100 130 100 100" stroke="#166534" stroke-width="6"/>
+    <!-- Folha superior -->
+    <path d="M100 100 C100 60 130 40 150 60 C170 80 150 110 100 100" fill="#22c55e"/>
+    <!-- Folha inferior -->
+    <path d="M100 100 C100 140 70 160 50 140 C30 120 50 90 100 100" fill="#22c55e"/>
+    <!-- Folha esquerda -->
+    <path d="M100 100 C60 100 40 70 60 50 C80 30 110 50 100 100" fill="#22c55e"/>
+    <!-- Folha direita -->
+    <path d="M100 100 C140 100 160 130 140 150 C120 170 90 150 100 100" fill="#22c55e"/>
+    <!-- centro -->
+    <circle cx="100" cy="100" r="8" fill="#15803d" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <!-- Ícone trevo -->
+  <g transform="translate(10,10) scale(0.2)" stroke="#14532d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 170 Q100 130 100 100" stroke="#166534" stroke-width="8"/>
+    <path d="M100 100 C100 60 130 40 150 60 C170 80 150 110 100 100" fill="#22c55e"/>
+    <path d="M100 100 C100 140 70 160 50 140 C30 120 50 90 100 100" fill="#22c55e"/>
+    <path d="M100 100 C60 100 40 70 60 50 C80 30 110 50 100 100" fill="#22c55e"/>
+    <path d="M100 100 C140 100 160 130 140 150 C120 170 90 150 100 100" fill="#22c55e"/>
+    <circle cx="100" cy="100" r="10" fill="#14532d" stroke="none"/>
+  </g>
+  <!-- Texto -->
+  <text x="60" y="42" font-family="Outfit, sans-serif" font-weight="800" font-size="32" fill="#14532d" letter-spacing="2">TREVOS</text>
+</svg>

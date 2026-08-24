@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /backoffice
+Disallow: /admin
+Disallow: /checkout
+Disallow: /api/
+
+Sitemap: https://www.friocostaverde.com/sitemap.xml
+Host: https://www.friocostaverde.com
