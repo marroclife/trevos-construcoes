@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
-  <!-- Ícone trevo -->
-  <g transform="translate(10,10) scale(0.2)" stroke="#14532d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M100 170 Q100 130 100 100" stroke="#166534" stroke-width="8"/>
-    <path d="M100 100 C100 60 130 40 150 60 C170 80 150 110 100 100" fill="#22c55e"/>
-    <path d="M100 100 C100 140 70 160 50 140 C30 120 50 90 100 100" fill="#22c55e"/>
-    <path d="M100 100 C60 100 40 70 60 50 C80 30 110 50 100 100" fill="#22c55e"/>
-    <path d="M100 100 C140 100 160 130 140 150 C120 170 90 150 100 100" fill="#22c55e"/>
-    <circle cx="100" cy="100" r="10" fill="#14532d" stroke="none"/>
-  </g>
-  <!-- Texto -->
-  <text x="60" y="42" font-family="Outfit, sans-serif" font-weight="800" font-size="32" fill="#14532d" letter-spacing="2">TREVOS</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 84" role="img" aria-labelledby="title"><title id="title">Trevos Comércio Serviços e Empreendimentos</title><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a8"/><stop offset=".5" stop-color="#d8a83e"/><stop offset="1" stop-color="#9f6b16"/></linearGradient></defs><g transform="translate(3 2) scale(.4)" stroke="#9f6b16" stroke-width="3" stroke-linejoin="round"><path fill="url(#g)" d="M99 94C61 77 47 51 59 30 70 10 96 19 101 48 106 19 132 10 143 30 155 51 141 77 103 94Z"/><path fill="url(#g)" d="M106 98C123 60 149 46 170 58 190 69 181 95 152 100 181 105 190 131 170 142 149 154 123 140 106 102Z"/><path fill="url(#g)" d="M98 106C60 123 46 149 58 170 69 190 95 181 100 152 105 181 131 190 142 170 154 149 140 123 102 106Z"/><path fill="url(#g)" d="M94 98C77 60 51 46 30 58 10 69 19 95 48 100 19 105 10 131 30 142 51 154 77 140 94 102Z"/><path d="M101 105C103 128 101 151 91 179" fill="none" stroke="#b77d18" stroke-width="6" stroke-linecap="round"/></g><text x="88" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="31" font-weight="700" letter-spacing="2.5" fill="#123d18">TREVOS</text><text x="90" y="62" font-family="Arial, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.45" fill="#81611f">COMÉRCIO • SERVIÇOS • EMPREENDIMENTOS</text><text x="90" y="75" font-family="Georgia, serif" font-size="8" font-style="italic" letter-spacing="1" fill="#123d18">CONSTRUINDO SONHOS</text></svg>

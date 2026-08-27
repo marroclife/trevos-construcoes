@@ -3,13 +3,13 @@
 
 @theme {
   /* Cores da marca Trevo */
-  --color-green-brand: #166534;
-  --color-green-dark: #14532d;
-  --color-green-light: #22c55e;
-  --color-green-gely: #f0fdf4;
-  --color-beige-brand: #f5f5dc;
-  --color-beige-dark: #e6e6c8;
-  --color-orange-accent: #d97706;
+  --color-green-brand: #123d18;
+  --color-green-dark: #0b2e10;
+  --color-green-light: #2f6b36;
+  --color-green-gely: #f4f7ee;
+  --color-beige-brand: #f8ecc6;
+  --color-beige-dark: #e4d29a;
+  --color-orange-accent: #c9972f;
 
   --font-sans: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-display: "Outfit", sans-serif;

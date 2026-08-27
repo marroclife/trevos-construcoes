@@ -14,6 +14,13 @@ O projeto foi reposicionado para atender cinco frentes:
 
 ## Implementações realizadas
 
+- Identidade visual atualizada com base na marca oficial enviada pela proprietária.
+- Paleta principal alterada para verde floresta, dourado e creme.
+- Novas versões vetoriais do logo para fundos claros, escuros e uso somente do símbolo.
+- Razão social identificada como `TREVOS COMÉRCIO SERVIÇOS E EMPREENDIMENTOS LTDA`.
+- CNPJ informado na marca: `40.176.506/0001-18`.
+- Arte original arquivada em `public/brand-reference-trevos.png`.
+
 - Avaliações do Google com nota 5,0 e 49 avaliações.
 - Endpoint `/api/google-reviews` preparado para Google Places API New.
 - Fallback local com três avaliações públicas enquanto as credenciais não estiverem configuradas.

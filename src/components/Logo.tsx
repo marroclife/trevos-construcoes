@@ -17,14 +17,14 @@ export default function Logo({ className = '', iconOnly = false, variant = 'dark
       {iconOnly ? (
         <img
           src="/logo-trevo.svg"
-          alt="Trevos Construções"
+          alt="Trevos Comércio, Serviços e Empreendimentos"
           className="h-12 w-auto object-contain"
         />
       ) : (
         <img
           src={src}
-          alt="Trevos Construções"
-          className="h-12 w-auto object-contain"
+          alt="Trevos Comércio, Serviços e Empreendimentos"
+          className="h-14 w-auto object-contain"
         />
       )}
     </div>

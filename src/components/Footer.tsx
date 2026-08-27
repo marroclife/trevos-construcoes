@@ -26,8 +26,8 @@ export default function Footer({ onEnterAdmin }: FooterProps) {
           <div className="lg:col-span-5 space-y-5">
             <Logo variant="light" />
             <p className="text-slate-400 text-xs sm:text-sm font-sans leading-relaxed font-light max-w-sm">
-              Loja de materiais de construção em Mangaratiba. Variedade de produtos, entrega na obra,
-              consultoria técnica e serviços para projetos residenciais e comerciais.
+              Comércio, serviços e empreendimentos em Mangaratiba. Materiais, entrega na obra,
+              consultoria e execução para projetos residenciais, empresariais e públicos.
             </p>
 
             <div className="space-y-2 pt-2">
@@ -124,7 +124,7 @@ export default function Footer({ onEnterAdmin }: FooterProps) {
           </div>
           <div className="flex gap-4 items-center">
             <span className="hover:text-white transition-all cursor-default text-[10px] uppercase font-sans tracking-widest bg-slate-900 px-3 py-1 rounded">
-              CNPJ SOB CONSULTA
+              CNPJ 40.176.506/0001-18
             </span>
             <button onClick={scrollToTop} className="hover:text-white transition-colors cursor-pointer text-xs">
               Voltar ao Topo ↑
