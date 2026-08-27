@@ -49,10 +49,25 @@ export interface Appointment {
   date: string;
   time: string;
   description: string;
+  customerType?: 'CPF' | 'CNPJ' | 'Licitação';
+  document?: string;
+  paymentTerm?: string;
+  entityName?: string;
+  bidNumber?: string;
   dischargeMethod?: string;
   accessType?: string;
   status: 'Novo' | 'Confirmado' | 'Concluído' | 'Cancelado';
   createdAt: string;
+}
+
+export interface GoogleReview {
+  id: string;
+  author: string;
+  authorUrl?: string;
+  avatarUrl?: string;
+  rating: number;
+  text: string;
+  relativeTime: string;
 }
 
 export interface CustomerBudget {
@@ -74,4 +89,3 @@ export interface Testimonial {
   date: string;
   verified: boolean;
 }
-

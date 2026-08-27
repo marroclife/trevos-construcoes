@@ -8,9 +8,9 @@ export const COSTA_VERDE_CITIES = [
 ];
 
 export const DISTRICT_DELIVERY_INFO = [
-  { district: 'Mangaratiba Centro & Praia do Saco', rule: 'Frete Grátis acima de R$ 300', estimate: 'Pronta Entrega / Pronta Retirada', badge: 'Retirada ou 2h' },
-  { district: 'Muriqui & Itacuruçá', rule: 'Entregas diárias (Turno da Manhã)', estimate: 'Entrega em até 24h', badge: 'Diário' },
-  { district: 'Conceição de Jacareí', rule: 'Entregas programadas (Terças e Quintas)', estimate: 'Agendamento Direto', badge: 'Programado' },
+  { district: 'Mangaratiba Centro & Praia do Saco', rule: 'Frete e prazo calculados conforme volume e endereço', estimate: 'Pronta Entrega / Pronta Retirada', badge: 'Consulte' },
+  { district: 'Muriqui & Itacuruçá', rule: 'Entregas programadas conforme rota e disponibilidade', estimate: 'Entrega programada', badge: 'Agendamento' },
+  { district: 'Conceição de Jacareí', rule: 'Frete e calendário confirmados no orçamento', estimate: 'Agendamento Direto', badge: 'Programado' },
   { district: 'Serra do Piloto & Zona Rural', rule: 'Entrega via Caminhão Munck / Basculante', estimate: 'Sob Consulta Logística', badge: 'Especial' },
 ];
 
@@ -84,6 +84,7 @@ export const DEPARTMENTS = [
   { key: 'epi', label: 'EPI e Segurança', icon: '🦺' },
   { key: 'jardim', label: 'Casa e Jardim', icon: '🌿' },
   { key: 'impermeabilizantes', label: 'Impermeabilizantes', icon: '🛡️' },
+  { key: 'escritorio-papelaria', label: 'Escritório e Papelaria', icon: '🗂️' },
 ];
 
 export const SERVICE_EQUIPMENTS = [
@@ -120,6 +121,20 @@ export const SERVICE_EQUIPMENTS = [
       'Execução de Reformas',
       'Acompanhamento de Obra',
       'Indicação de Empreiteiros Parceiros',
+      'Reformas de Prédios Públicos',
+      'Fornecimento para Licitações',
+    ],
+  },
+  {
+    key: 'Empresas e Licitações',
+    label: 'Empresas e Licitações',
+    emoji: '🏛️',
+    services: [
+      'Cotação para CNPJ',
+      'Fornecimento para Órgãos Públicos',
+      'Reforma e Manutenção Predial',
+      'Proposta Institucional',
+      'Análise de Edital e Prazo de Faturamento',
     ],
   },
   {
@@ -159,6 +174,38 @@ export const BRANDS = [
 ];
 
 export const PARTS_LIST: PartItem[] = [
+  {
+    id: 'esc-01',
+    name: 'Cadeira de Escritório Ergonômica',
+    category: 'escritorio-papelaria',
+    subcategory: 'Móveis para Escritório',
+    description: 'Cadeira giratória com regulagem de altura e apoio lombar para ambientes corporativos, escolas e órgãos públicos.',
+    code: 'CAD-ERG-01',
+    availability: 'Sob Encomenda (Rápido)',
+    compatibleBrands: ['Sob consulta'],
+    price: 489,
+    wholesalePrice: 439,
+    wholesaleMinQty: 5,
+    unitLabel: 'unidade',
+    rating: 5,
+    reviewsCount: 1,
+  },
+  {
+    id: 'esc-02',
+    name: 'Papel Sulfite A4 75g 500 folhas',
+    category: 'escritorio-papelaria',
+    subcategory: 'Papelaria',
+    description: 'Resma de papel A4 para escritórios, escolas, empresas e fornecimento institucional.',
+    code: 'PAP-A4-500',
+    availability: 'Disponível em Estoque',
+    compatibleBrands: ['Report', 'Chamex'],
+    price: 34.9,
+    wholesalePrice: 29.9,
+    wholesaleMinQty: 10,
+    unitLabel: 'resma',
+    rating: 5,
+    reviewsCount: 1,
+  },
   // Hidráulica
   {
     id: 'hid-01',
@@ -454,4 +501,3 @@ export const TESTIMONIALS: Testimonial[] = [
     verified: true,
   },
 ];
-

@@ -85,7 +85,7 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
           <div className="flex items-center gap-4 text-slate-300">
             <span className="flex items-center gap-1">
               <CreditCard className="w-3 h-3 text-emerald-400" />
-              <strong>10x sem juros</strong> no cartão
+              Consulte condições de parcelamento
             </span>
             <span className="hidden sm:inline-block text-slate-600">•</span>
             <span className="hidden sm:flex items-center gap-1 text-slate-300">
@@ -123,9 +123,7 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
           <Link to="/loja" className="hover:text-green-100 transition-colors">
             Loja de Materiais
           </Link>
-          <Link to="/proposta" className="hover:text-green-100 transition-colors">
-            Proposta
-          </Link>
+          <button onClick={() => scrollTo('licitacoes')} className="hover:text-green-100 transition-colors">Empresas & Governo</button>
         </div>
 
         {/* Desktop Actions */}
@@ -139,14 +137,6 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
             <span>{authUser ? 'Conta' : 'Entrar'}</span>
           </button>
 
-          <button
-            onClick={onEnterAdmin}
-            className="bg-white/10 hover:bg-white/20 text-white font-bold text-xs py-2.5 px-3.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
-            title="Painel Administrativo CMS"
-          >
-            <Settings className="w-4 h-4 text-white/80" />
-            <span>CMS</span>
-          </button>
 
           <button
             onClick={onOpenHistory}
@@ -247,20 +237,7 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
             </button>
           ))}
 
-          <Link
-            to="/proposta"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-bold text-white hover:text-green-100 px-3 py-1.5 transition-colors"
-          >
-            Proposta Comercial
-          </Link>
-
-          <button
-            onClick={() => { setMobileMenuOpen(false); onEnterAdmin(); }}
-            className="w-full text-left block text-sm font-bold text-white hover:text-green-100 px-3 py-1.5 transition-colors cursor-pointer"
-          >
-            Gestão Interna (CMS)
-          </button>
+          <button onClick={() => scrollTo('licitacoes')} className="block w-full text-left text-sm font-bold text-white hover:text-green-100 px-3 py-1.5">Empresas & Governo</button>
 
           <div className="grid grid-cols-2 gap-2 px-3 pt-2">
             <button
@@ -306,4 +283,3 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
     </header>
   );
 }
-

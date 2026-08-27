@@ -17,6 +17,11 @@ export default function BudgetCalculator() {
     date: '',
     time: '08:00',
     description: '',
+    customerType: 'CPF' as 'CPF' | 'CNPJ' | 'Licitação',
+    document: '',
+    entityName: '',
+    bidNumber: '',
+    paymentTerm: 'À vista / na entrega',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -42,6 +47,11 @@ export default function BudgetCalculator() {
       `👤 *Nome:* ${formData.name}\n` +
       `📧 *E-mail:* ${formData.email || 'Não informado'}\n` +
       `📱 *WhatsApp:* ${formData.phone}\n` +
+      `🏷️ *Modalidade:* ${formData.customerType}\n` +
+      `🏢 *Empresa/Órgão:* ${formData.entityName || 'Não se aplica'}\n` +
+      `🪪 *CPF/CNPJ:* ${formData.document || 'Não informado'}\n` +
+      `📑 *Processo/Edital:* ${formData.bidNumber || 'Não se aplica'}\n` +
+      `💳 *Prazo de pagamento:* ${formData.paymentTerm}\n` +
       `📍 *Local:* ${formData.district ? `${formData.district}, ` : ''}${formData.city}\n` +
       `🚚 *Acesso Obra:* ${formData.accessType}\n` +
       `📦 *Descarga:* ${formData.dischargeMethod}\n` +
@@ -103,6 +113,11 @@ export default function BudgetCalculator() {
       date: '',
       time: '08:00',
       description: '',
+      customerType: 'CPF',
+      document: '',
+      entityName: '',
+      bidNumber: '',
+      paymentTerm: 'À vista / na entrega',
     });
   };
 
@@ -159,6 +174,23 @@ export default function BudgetCalculator() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+
+              <div>
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Modalidade do orçamento *</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {(['CPF', 'CNPJ', 'Licitação'] as const).map(type => (
+                    <button key={type} type="button" onClick={() => setFormData(prev => ({ ...prev, customerType: type }))} className={`rounded-xl px-3 py-3 text-xs font-bold border transition-all ${formData.customerType === type ? 'bg-green-brand border-green-500 text-white' : 'bg-slate-800 border-slate-700 text-slate-300'}`}>{type}</button>
+                  ))}
+                </div>
+                <p className="text-[10px] text-slate-500 mt-2">Cada modalidade possui formação própria de preço, tributos, frete e prazo de faturamento.</p>
+              </div>
+
+              {formData.customerType !== 'CPF' && <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-800/40 p-4 rounded-2xl border border-slate-800">
+                <div><label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1.5">Empresa / Órgão</label><input name="entityName" value={formData.entityName} onChange={handleInputChange} placeholder="Razão social ou órgão público" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white outline-none focus:ring-2 focus:ring-green-brand/40" /></div>
+                <div><label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1.5">CNPJ</label><input name="document" value={formData.document} onChange={handleInputChange} placeholder="00.000.000/0001-00" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white outline-none focus:ring-2 focus:ring-green-brand/40" /></div>
+                {formData.customerType === 'Licitação' && <div><label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1.5">Processo / Edital</label><input name="bidNumber" value={formData.bidNumber} onChange={handleInputChange} placeholder="Número do processo ou edital" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white outline-none focus:ring-2 focus:ring-green-brand/40" /></div>}
+                <div><label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1.5">Prazo de pagamento</label><select name="paymentTerm" value={formData.paymentTerm} onChange={handleInputChange} className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white outline-none"><option>À vista / na entrega</option><option>15 dias</option><option>30 dias</option><option>45 dias</option><option>60 dias</option><option>Conforme edital</option></select></div>
+              </div>}
 
               {/* Row 1: Name + Phone */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -344,6 +376,7 @@ export default function BudgetCalculator() {
                 <span className="text-slate-400">Cliente</span>
                 <span className="font-semibold text-white">{formData.name || '—'}</span>
               </div>
+              <div className="flex justify-between border-b border-slate-700 pb-2"><span className="text-slate-400">Modalidade</span><span className="font-semibold text-orange-300">{formData.customerType}</span></div>
               <div className="flex justify-between border-b border-slate-700 pb-2">
                 <span className="text-slate-400">WhatsApp</span>
                 <span className="font-semibold text-white">{formData.phone || '—'}</span>

@@ -66,11 +66,12 @@ export default function Footer({ onEnterAdmin }: FooterProps) {
               <li><a href="/#servicos" className="hover:text-white transition-colors">Serviços</a></li>
               <li><a href="/#departamentos" className="hover:text-white transition-colors">Departamentos</a></li>
               <li><a href="/#assistente-materiais" className="hover:text-white transition-colors">Assistente de Materiais</a></li>
+              <li><a href="/#cymar" className="hover:text-white transition-colors">CYMAR — IA de Obras</a></li>
+              <li><a href="/#licitacoes" className="hover:text-white transition-colors">Empresas & Governo</a></li>
               <li><a href="/#solicitar-orcamento" className="hover:text-white transition-colors">Solicitar Orçamento</a></li>
               <li><Link to="/loja" className="hover:text-white transition-colors">Loja de Materiais</Link></li>
-              <li><Link to="/proposta" className="hover:text-white transition-colors">Proposta Comercial</Link></li>
               <li><a href="/#autoridade-local" className="hover:text-white transition-colors">Sobre Nós e Cobertura</a></li>
-              <li><a href="/#depoimentos" className="hover:text-white transition-colors">Feedback de Clientes</a></li>
+              <li><a href="/#avaliacoes-google" className="hover:text-white transition-colors">Avaliações do Google</a></li>
             </ul>
           </div>
 
@@ -125,12 +126,6 @@ export default function Footer({ onEnterAdmin }: FooterProps) {
             <span className="hover:text-white transition-all cursor-default text-[10px] uppercase font-sans tracking-widest bg-slate-900 px-3 py-1 rounded">
               CNPJ SOB CONSULTA
             </span>
-            <button
-              onClick={onEnterAdmin}
-              className="hover:text-white transition-colors cursor-pointer text-xs"
-            >
-              Painel Administrativo
-            </button>
             <button onClick={scrollToTop} className="hover:text-white transition-colors cursor-pointer text-xs">
               Voltar ao Topo ↑
             </button>

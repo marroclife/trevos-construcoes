@@ -22,6 +22,9 @@ import DiagnosticTool from '../components/DiagnosticTool';
 import BudgetCalculator from '../components/BudgetCalculator';
 import ServicesSection from '../components/ServicesSection';
 import PromoCarousel from '../components/PromoCarousel';
+import GoogleReviews from '../components/GoogleReviews';
+import CymarAssistant from '../components/CymarAssistant';
+import InstitutionalServices from '../components/InstitutionalServices';
 
 export default function HomePage() {
   const location = useLocation();
@@ -118,6 +121,8 @@ export default function HomePage() {
       {/* SERVICES */}
       <ServicesSection onScrollToBudget={scrollToBudget} />
 
+      <InstitutionalServices onBudget={scrollToBudget} />
+
       {/* DEPARTMENTS GRID */}
       <section className="py-16 bg-slate-50 border-y border-slate-200" id="departamentos">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -156,6 +161,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <CymarAssistant />
 
       {/* DIAGNOSTIC TOOL */}
       <section className="py-16 bg-slate-100 border-y border-slate-200" id="assistente-materiais">
@@ -222,7 +229,7 @@ export default function HomePage() {
                 <MapPin className="w-3.5 h-3.5" /> Referência em Mangaratiba e Região
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold font-display leading-tight text-white tracking-tight">
-                A Única Loja de Materiais de Construção de Mangaratiba com Site Estruturado
+                Materiais, serviços e orientação para obras em Mangaratiba
               </h2>
               <p className="text-slate-300 text-sm leading-relaxed font-sans font-light">
                 Localizada estrategicamente no município de Mangaratiba, a <strong className="text-white">Trevos Construções</strong> conecta
@@ -290,60 +297,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-16 bg-slate-50" id="depoimentos">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-          <div className="max-w-2xl mx-auto space-y-4">
-            <span className="text-xs font-bold text-green-brand uppercase tracking-widest block">Histórias Reais de Sucesso</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold font-display tracking-tight text-slate-900">
-              Quem já confia na <span className="text-green-brand">Trevos Construções</span>
-            </h2>
-            <p className="text-slate-500 text-sm font-sans font-light">
-              Veja o feedback de construtoras, pedreiros e donos de casa da região.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-            {TESTIMONIALS.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="bg-white border border-slate-100 rounded-2xl p-6 text-left flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex text-amber-500 gap-0.5" aria-hidden="true">
-                      {Array.from({ length: testimonial.rating }).map((_, idx) => (
-                        <Star key={idx} className="w-4 h-4 fill-current text-amber-500" />
-                      ))}
-                    </div>
-                    {testimonial.verified && (
-                      <span className="bg-emerald-50 text-emerald-700 text-[9px] font-bold py-0.5 px-2 rounded-full uppercase border border-emerald-100 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
-                        Cliente Verificado
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="text-slate-700 text-xs sm:text-sm font-sans italic leading-relaxed font-light">
-                    "{testimonial.content}"
-                  </p>
-                </div>
-
-                <div className="border-t border-slate-100 pt-4 mt-5 flex justify-between items-center text-xs text-slate-500">
-                  <div>
-                    <strong className="text-slate-900 font-bold block">{testimonial.name}</strong>
-                    <span className="text-slate-400 text-[11px] block">{testimonial.role}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-slate-700 font-semibold block">{testimonial.location}</span>
-                    <span className="text-[10px] text-slate-400 font-mono tracking-tighter">{testimonial.date}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <GoogleReviews />
     </div>
   );
 }

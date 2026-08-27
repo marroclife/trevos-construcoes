@@ -106,7 +106,7 @@ export default function BackofficeDashboard({
   const [formSubcategory, setFormSubcategory] = useState('');
   const [formDescription, setFormDescription] = useState('');
   const [formPrice, setFormPrice] = useState('');
-  const [formAvailability, setFormAvailability] = useState<'Disponível em Estoque' | 'Sob Encomenda (Rápido)' | 'Últimas Unidades'>('Disponível em Estoque');
+  const [formAvailability, setFormAvailability] = useState<PartItem['availability']>('Disponível em Estoque');
   const [formBrands, setFormBrands] = useState('');
   const [formImageUrl, setFormImageUrl] = useState('');
   const [formImageLoading, setFormImageLoading] = useState(false);

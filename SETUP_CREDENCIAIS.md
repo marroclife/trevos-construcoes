@@ -1,4 +1,6 @@
-# Guia de Credenciais — Frio Costa Verde
+# Guia de Credenciais — Trevos Construções
+
+> Nunca envie chaves em mensagens ou coloque segredos em variáveis `VITE_*`. Credenciais privadas pertencem apenas ao servidor/Vercel.
 
 Este guia explica como obter as 3 credenciais principais para colocar o projeto 100% online.
 
@@ -89,6 +91,10 @@ Quando você fizer deploy na Vercel, as variáveis do `.env.local` não vão aut
    - `MERCADO_PAGO_ACCESS_TOKEN`
    - `MERCADO_PAGO_PUBLIC_KEY`
    - `JWT_SECRET` (pode gerar uma string aleatória, ex: em https://generate-secret.vercel.app/32)
+   - `GOOGLE_PLACES_API_KEY` (Places API New, restrita à API e ao projeto)
+   - `GOOGLE_PLACE_ID` (ID oficial da ficha da Trevos)
+   - `OPENAI_API_KEY` (somente no servidor, usada pela CYMAR)
+   - `OPENAI_VISION_MODEL` (opcional; padrão atual do projeto: `gpt-4.1-mini`)
 5. Clique em **Save** e faça um novo deploy.
 
 ---
@@ -138,6 +144,20 @@ Após o deploy na Vercel:
 - [ ] Variáveis cadastradas no dashboard da Vercel
 - [ ] Migrações do Prisma aplicadas no Neon (`npx prisma migrate dev`)
 - [ ] Deploy testado: `/api/health`, CMS, upload de imagem
+- [ ] Places API habilitada e `/api/google-reviews` retornando `source: google`
+- [ ] `OPENAI_API_KEY` configurada e análise da CYMAR testada com uma foto sem dados pessoais
+
+## 7. Fotografias do hero
+
+Salve as fotografias originais tratadas em `public/` ou em um CDN e configure:
+
+```env
+VITE_HERO_IMAGE_1=/hero-loja-1.webp
+VITE_HERO_IMAGE_2=/hero-loja-2.webp
+VITE_HERO_IMAGE_3=/hero-loja-3.webp
+```
+
+Use apenas fotografias cuja utilização comercial tenha sido autorizada. As imagens da ficha do Google servem como referência e devem ser integradas conforme as políticas e atribuições do Google Places.
 
 ---
 

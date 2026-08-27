@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Truck, Percent, HardHat, Clock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Truck, Building2, HardHat, Sparkles } from 'lucide-react';
 
 interface PromoSlide {
   id: string;
@@ -11,6 +11,7 @@ interface PromoSlide {
   bgGradient: string;
   accentColor: string;
   highlight: string;
+  imageUrl?: string;
 }
 
 interface PromoCarouselProps {
@@ -22,25 +23,27 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
   const slides: PromoSlide[] = [
     {
       id: 'promo-1',
-      title: 'Entrega Grátis em Mangaratiba',
-      subtitle: 'Na compra acima de R$ 500, levamos o material direto na sua obra ou residência. Agende o melhor dia e horário.',
+      title: 'Tudo para sua obra em Mangaratiba',
+      subtitle: 'Materiais, orientação e entrega programada para construir ou reformar com mais segurança. Consulte condições e disponibilidade.',
       cta: 'Agendar Entrega',
-      ctaAction: () => onWhatsApp('entrega grátis'),
+      ctaAction: () => onWhatsApp('materiais e entrega'),
       icon: <Truck className="w-16 h-16 md:w-24 md:h-24" />,
       bgGradient: 'from-green-800 via-green-900 to-green-950',
       accentColor: 'bg-orange-accent',
-      highlight: 'FRETE GRÁTIS',
+      highlight: 'LOJA E ENTREGA',
+      imageUrl: import.meta.env.VITE_HERO_IMAGE_1,
     },
     {
       id: 'promo-2',
-      title: '10% OFF na Primeira Compra',
-      subtitle: 'Cadastre-se e ganhe 10% de desconto no primeiro orçamento. Válido para materiais de construção e ferragens.',
-      cta: 'Garantir Desconto',
-      ctaAction: () => onWhatsApp('10% off primeira compra'),
-      icon: <Percent className="w-16 h-16 md:w-24 md:h-24" />,
+      title: 'Trevos Empresas & Governo',
+      subtitle: 'Cotações para CNPJ, construtoras, condomínios e órgãos públicos com condições próprias de tributos, logística e faturamento.',
+      cta: 'Solicitar Proposta',
+      ctaAction: onScrollToBudget,
+      icon: <Building2 className="w-16 h-16 md:w-24 md:h-24" />,
       bgGradient: 'from-emerald-800 via-green-900 to-green-950',
       accentColor: 'bg-yellow-500',
-      highlight: 'DESCONTO',
+      highlight: 'CNPJ E LICITAÇÕES',
+      imageUrl: import.meta.env.VITE_HERO_IMAGE_2,
     },
     {
       id: 'promo-3',
@@ -52,17 +55,19 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
       bgGradient: 'from-green-700 via-green-800 to-green-950',
       accentColor: 'bg-orange-accent',
       highlight: 'CONSULTORIA',
+      imageUrl: import.meta.env.VITE_HERO_IMAGE_3,
     },
     {
       id: 'promo-4',
-      title: 'Atendimento de Segunda a Sábado',
-      subtitle: 'Estamos abertos para atender construtoras, pedreiros e donos de casa. Tire dúvidas e peça orçamentos pelo WhatsApp.',
-      cta: 'Falar no WhatsApp',
-      ctaAction: () => onWhatsApp('atendimento'),
-      icon: <Clock className="w-16 h-16 md:w-24 md:h-24" />,
+      title: 'Conheça a CYMAR',
+      subtitle: 'Envie uma foto da parede, entenda a preparação necessária, veja materiais sugeridos e planeje uma nova cor para o ambiente.',
+      cta: 'Usar a CYMAR',
+      ctaAction: () => document.getElementById('cymar')?.scrollIntoView({ behavior: 'smooth' }),
+      icon: <Sparkles className="w-16 h-16 md:w-24 md:h-24" />,
       bgGradient: 'from-green-900 via-emerald-900 to-green-950',
       accentColor: 'bg-green-400',
-      highlight: 'ATENDIMENTO',
+      highlight: 'IA DE OBRAS',
+      imageUrl: '/cymar-assistant.png',
     },
   ];
 
@@ -93,12 +98,6 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
     <section
       className="relative bg-green-950 overflow-hidden"
       id="hero-promocoes"
-      style={{
-        width: '100vw',
-        marginLeft: 'calc(50% - 50vw)',
-        marginRight: 'calc(50% - 50vw)',
-        alignSelf: 'stretch',
-      }}
     >
       <div className="relative w-full h-[420px] md:h-[520px] lg:h-[560px]">
         {slides.map((slide, index) => {
@@ -122,6 +121,7 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${slide.bgGradient}`}
               />
+              {slide.imageUrl && <div className="absolute inset-0 bg-cover bg-center opacity-35" style={{ backgroundImage: `url(${slide.imageUrl})` }} />}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#052e16_1px,transparent_1px),linear-gradient(to_bottom,#052e16_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 via-transparent to-transparent" />
 
@@ -174,14 +174,14 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
         {/* Navigation Arrows */}
         <button
           onClick={() => { prev(); setIsAutoPlaying(false); setTimeout(() => setIsAutoPlaying(true), 8000); }}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm border border-white/10 transition-all"
+          className="hidden sm:block absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm border border-white/10 transition-all"
           aria-label="Slide anterior"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={() => { next(); setIsAutoPlaying(false); setTimeout(() => setIsAutoPlaying(true), 8000); }}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm border border-white/10 transition-all"
+          className="hidden sm:block absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm border border-white/10 transition-all"
           aria-label="Próximo slide"
         >
           <ChevronRight className="w-6 h-6" />

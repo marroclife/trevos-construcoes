@@ -1,5 +1,5 @@
 import React from 'react';
-import { Truck, ClipboardList, HardHat, Store, Clock, ShieldCheck, CheckCircle2, ChevronRight, Wrench } from 'lucide-react';
+import { Truck, ClipboardList, HardHat, Store, Clock, ShieldCheck, ChevronRight, Wrench, Landmark } from 'lucide-react';
 import { SERVICE_EQUIPMENTS } from '../data/mockData';
 
 interface ServicesSectionProps {
@@ -43,6 +43,12 @@ export default function ServicesSection({ onScrollToBudget }: ServicesSectionPro
       title: 'Outros Serviços',
       description: 'Cortes de madeira e metal, reserva de material, troca e devolução, assistência pós-venda e serviços sob consulta.',
       tags: ['Cortes', 'Reservas', 'Pós-venda'],
+    },
+    {
+      icon: <Landmark className="w-6 h-6" />,
+      title: 'Reformas & Licitações',
+      description: 'Fornecimento e serviços para CNPJ, condomínios e órgãos públicos, com proposta institucional e logística planejada.',
+      tags: ['CNPJ', 'Órgãos Públicos', 'Reformas'],
     },
   ];
 
