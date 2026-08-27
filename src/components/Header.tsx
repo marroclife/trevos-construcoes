@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Phone, Menu, X, ShoppingCart as CartIcon, User, Settings, History, Camera, Truck, CreditCard, ShieldCheck } from 'lucide-react';
+import { Phone, Menu, X, ShoppingCart as CartIcon, User, History, Camera, CreditCard, ShieldCheck, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { AuthUser } from '../lib/supabase';
 import { supabase } from '../lib/supabase';
@@ -78,9 +78,9 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-green-brand backdrop-blur-md border-b border-green-dark/20 shadow-md transition-all duration-250">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0d3717]/95 shadow-[0_8px_30px_rgba(3,22,8,0.18)] backdrop-blur-xl transition-all duration-250">
       {/* Top Banner Bar for Payment & Photo WhatsApp */}
-      <div className="bg-slate-950 text-white text-[11px] py-1.5 px-4 border-b border-slate-800">
+      <div className="border-b border-white/5 bg-[#06101d] px-4 py-1.5 text-[11px] text-white">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-4 text-slate-300">
             <span className="flex items-center gap-1">
@@ -96,60 +96,61 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
 
           <button
             onClick={handlePhotoUploadWhatsApp}
-            className="inline-flex items-center gap-1.5 bg-orange-accent hover:opacity-90 text-white font-bold px-2.5 py-0.5 rounded-full text-[10px] transition-all cursor-pointer shadow-sm"
+            className="inline-flex items-center gap-1.5 rounded-full bg-orange-accent px-3 py-0.5 text-[10px] font-bold text-white shadow-sm transition-all hover:brightness-110"
           >
             <Camera className="w-3 h-3" />
-            Tire foto da sua lista no caderno e mande no Zap!
+            <span className="sm:hidden">Envie sua lista por foto</span>
+            <span className="hidden sm:inline">Tire uma foto da lista e receba seu orçamento</span>
           </button>
         </div>
       </div>
 
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" id="header-navigation">
-        <Link to="/" className="hover:opacity-95 transition-opacity bg-white rounded-xl px-3 py-2 shadow-sm">
-          <Logo variant="dark" />
+      <nav className="mx-auto flex h-[76px] max-w-[1440px] items-center gap-5 px-4 sm:px-6 lg:px-8" id="header-navigation">
+        <Link to="/" className="shrink-0 rounded-2xl bg-[#fffdf8] px-3 py-1.5 shadow-sm transition-transform hover:scale-[1.02]">
+          <Logo variant="dark" className="[&_img]:h-12" />
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-white/90">
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-5 text-[13px] font-semibold text-white/85 xl:flex 2xl:gap-7">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={link.action}
-              className="hover:text-green-100 transition-colors cursor-pointer"
+              className="whitespace-nowrap transition-colors hover:text-[#e7c979]"
             >
               {link.label}
             </button>
           ))}
-          <Link to="/loja" className="hover:text-green-100 transition-colors">
-            Loja de Materiais
+          <Link to="/loja" className="whitespace-nowrap transition-colors hover:text-[#e7c979]">
+            Loja
           </Link>
-          <button onClick={() => scrollTo('licitacoes')} className="hover:text-green-100 transition-colors">Empresas & Governo</button>
+          <button onClick={() => scrollTo('licitacoes')} className="whitespace-nowrap transition-colors hover:text-[#e7c979]">Empresas & Governo</button>
         </div>
 
         {/* Desktop Actions */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="ml-auto hidden shrink-0 items-center gap-2 md:flex">
           <button
             onClick={onOpenAuth}
-            className="bg-white/10 hover:bg-white/20 text-white font-bold text-xs py-2.5 px-3.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/12"
             title={authUser ? `Logado como ${authUser.email}` : 'Entrar'}
+            aria-label={authUser ? 'Minha conta' : 'Entrar'}
           >
-            <User className="w-4 h-4 text-white/80" />
-            <span>{authUser ? 'Conta' : 'Entrar'}</span>
+            <User className="h-4 w-4" />
           </button>
 
 
           <button
             onClick={onOpenHistory}
-            className="bg-white/10 hover:bg-white/20 text-white font-bold text-xs py-2.5 px-3.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/12"
             title="Central de Vendas e Pedidos"
+            aria-label="Meus pedidos"
           >
-            <History className="w-4 h-4 text-white/80" />
-            <span>Pedidos</span>
+            <History className="h-4 w-4" />
           </button>
 
           <button
             onClick={onOpenCart}
-            className="bg-orange-accent hover:opacity-95 text-white font-bold text-xs py-2.5 px-4 rounded-xl transition-all shadow-md flex items-center gap-1.5 relative cursor-pointer"
+            className="relative flex h-10 items-center gap-2 rounded-xl bg-orange-accent px-3.5 text-xs font-bold text-white shadow-md transition hover:brightness-110"
             title="Abrir Meu Carrinho"
           >
             <CartIcon className="w-4 h-4" />
@@ -163,16 +164,16 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
 
           <button
             onClick={() => setChannelModalOpen(true)}
-            className="bg-white text-green-brand hover:bg-green-50 font-bold text-xs py-2.5 px-4 rounded-xl transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
+            className="flex h-10 items-center gap-2 rounded-xl bg-white px-3.5 text-xs font-bold text-green-brand shadow-md transition hover:bg-[#fff8e7]"
           >
-            <Phone className="w-3.5 h-3.5" /> Falar no WhatsApp
+            <Phone className="h-3.5 w-3.5" /> Atendimento <ChevronDown className="h-3 w-3 opacity-50" />
           </button>
         </div>
 
         {/* Mobile hamburger button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-white hover:text-cyan-100 focus:outline-none"
+          className="ml-auto rounded-xl border border-white/10 p-2.5 text-white hover:bg-white/10 focus:outline-none md:hidden"
           aria-label="Menu principal"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

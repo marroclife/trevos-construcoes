@@ -158,21 +158,24 @@ export default function CymarChat() {
         </section>
       )}
 
-      {!isOpen && (
-        <div className="mb-2 ml-auto hidden w-max rounded-xl border border-emerald-900/10 bg-white px-3 py-1.5 text-[10px] font-bold text-green-950 shadow-lg sm:block">
-          Fale com a CYMAR <span className="text-[#b58a31]">• Assistente de Obras</span>
-        </div>
-      )}
       <button
         onClick={() => setIsOpen(current => !current)}
         aria-label={isOpen ? 'Fechar chat da CYMAR' : 'Conversar com a CYMAR'}
         aria-expanded={isOpen}
-        className="relative ml-auto flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#d6b15e] bg-white shadow-2xl shadow-green-950/30 transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#d6b15e]/30"
+        className={`group relative ml-auto flex h-16 items-center rounded-full border border-[#d6b15e]/70 bg-[#fffdf8] shadow-2xl shadow-green-950/30 transition hover:-translate-y-1 hover:shadow-green-950/40 focus:outline-none focus:ring-4 focus:ring-[#d6b15e]/30 ${isOpen ? 'w-16 justify-center overflow-hidden border-[3px]' : 'w-16 justify-center p-1 sm:w-[236px] sm:justify-start sm:gap-3 sm:pr-5'}`}
       >
-        <img src="/cymar-assistant.png" alt="" className="h-full w-full object-cover object-[50%_16%] scale-[1.6]" />
-        <span className="absolute bottom-0.5 right-0.5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-white bg-emerald-500">
-          <MessageCircle className="h-2.5 w-2.5 text-white" />
+        <span className={`${isOpen ? 'h-full w-full' : 'h-14 w-14'} relative shrink-0 overflow-hidden rounded-full border-2 border-[#d6b15e] bg-white`}>
+          <img src="/cymar-assistant.png" alt="" className="h-full w-full object-cover object-[50%_16%] scale-[1.6]" />
+          <span className="absolute bottom-0 right-0 flex h-4 w-4 items-center justify-center rounded-full border-2 border-white bg-emerald-500">
+            <MessageCircle className="h-2.5 w-2.5 text-white" />
+          </span>
         </span>
+        {!isOpen && (
+          <span className="hidden min-w-0 text-left sm:block">
+            <span className="block font-display text-sm font-extrabold leading-tight text-green-950">Posso ajudar na sua obra?</span>
+            <span className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-[#9b7428]"><Sparkles className="h-3 w-3" /> Converse com a CYMAR</span>
+          </span>
+        )}
       </button>
     </div>
   );
