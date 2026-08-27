@@ -31,7 +31,7 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
       bgGradient: 'from-green-800 via-green-900 to-green-950',
       accentColor: 'bg-orange-accent',
       highlight: 'LOJA E ENTREGA',
-      imageUrl: import.meta.env.VITE_HERO_IMAGE_1,
+      imageUrl: '/hero-loja.webp',
     },
     {
       id: 'promo-2',
@@ -43,7 +43,7 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
       bgGradient: 'from-emerald-800 via-green-900 to-green-950',
       accentColor: 'bg-yellow-500',
       highlight: 'CNPJ E LICITAÇÕES',
-      imageUrl: import.meta.env.VITE_HERO_IMAGE_2,
+      imageUrl: '/hero-governo.webp',
     },
     {
       id: 'promo-3',
@@ -55,7 +55,7 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
       bgGradient: 'from-green-700 via-green-800 to-green-950',
       accentColor: 'bg-orange-accent',
       highlight: 'CONSULTORIA',
-      imageUrl: import.meta.env.VITE_HERO_IMAGE_3,
+      imageUrl: '/hero-consultoria.webp',
     },
     {
       id: 'promo-4',
@@ -67,7 +67,7 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
       bgGradient: 'from-green-900 via-emerald-900 to-green-950',
       accentColor: 'bg-green-400',
       highlight: 'IA DE OBRAS',
-      imageUrl: '/cymar-assistant.png',
+      imageUrl: '/hero-cymar.webp',
     },
   ];
 
@@ -121,7 +121,8 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${slide.bgGradient}`}
               />
-              {slide.imageUrl && <div className="absolute inset-0 bg-cover bg-center opacity-35" style={{ backgroundImage: `url(${slide.imageUrl})` }} />}
+              {slide.imageUrl && <div className="absolute inset-0 bg-cover opacity-80" style={{ backgroundImage: `url(${slide.imageUrl})`, backgroundPosition: slide.id === 'promo-4' ? 'right top' : 'right center' }} />}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-950 via-green-950/80 to-green-950/10" />
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#052e16_1px,transparent_1px),linear-gradient(to_bottom,#052e16_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 via-transparent to-transparent" />
 
@@ -157,14 +158,14 @@ export default function PromoCarousel({ onScrollToBudget, onWhatsApp }: PromoCar
                     </div>
                   </div>
 
-                  <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
+                  {!slide.imageUrl && <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
                     <div className="relative">
                       <div className={`absolute inset-0 ${slide.accentColor} opacity-20 blur-3xl rounded-full scale-125`} />
                       <div className="relative text-white/90 drop-shadow-2xl">
                         {slide.icon}
                       </div>
                     </div>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </div>

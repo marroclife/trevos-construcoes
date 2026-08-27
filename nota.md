@@ -20,6 +20,8 @@ O projeto foi reposicionado para atender cinco frentes:
 - Razão social identificada como `TREVOS COMÉRCIO SERVIÇOS E EMPREENDIMENTOS LTDA`.
 - CNPJ informado na marca: `40.176.506/0001-18`.
 - Arte original arquivada em `public/brand-reference-trevos.png`.
+- Quatro imagens horizontais próprias para o carrossel foram geradas e otimizadas em WebP: loja/entrega, empresas/governo, consultoria e CYMAR.
+- O banner da CYMAR usa composição em plano aberto, com a personagem à direita e espaço para texto à esquerda; não reutilizar o retrato vertical como `background-size: cover`.
 
 - Avaliações do Google com nota 5,0 e 49 avaliações.
 - Endpoint `/api/google-reviews` preparado para Google Places API New.
