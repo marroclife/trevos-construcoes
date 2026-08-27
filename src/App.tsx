@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { Phone, MessageSquare, ShoppingCart as CartIcon } from 'lucide-react';
+import { MessageSquare, ShoppingCart as CartIcon } from 'lucide-react';
 
 import { TESTIMONIALS, PARTS_LIST, COSTA_VERDE_CITIES, BRANDS } from './data/mockData';
 import { PartItem } from './types';
@@ -17,6 +17,7 @@ import AuthModal from './components/AuthModal';
 import HomePage from './pages/HomePage';
 import StorePage from './pages/StorePage';
 import ProposalPage from './pages/ProposalPage';
+import CymarChat from './components/CymarChat';
 
 function AppContent() {
   const navigate = useNavigate();
@@ -218,30 +219,7 @@ function AppContent() {
         </button>
       </div>
 
-      {/* Floating WhatsApp button */}
-      <div className={`fixed ${location.pathname === '/' ? 'bottom-28' : 'bottom-6'} right-6 hidden sm:flex flex-col items-end z-45 select-none hover:scale-105 duration-200`}>
-        <div className="bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-xl border border-slate-800 mb-2.5 relative animate-float">
-          Plantão Trevos Construções Online
-          <div className="absolute -bottom-1 right-5 w-2.5 h-2.5 bg-slate-900 transform rotate-45 border-r border-b border-slate-800"></div>
-        </div>
-
-        <button
-          onClick={() => {
-            const text = encodeURIComponent('Olá Trevos Construções! Preciso de ajuda com materiais ou serviços.');
-            window.open(`https://wa.me/5521990387232?text=${text}`, '_blank');
-          }}
-          className="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl shadow-emerald-600/30 flex items-center justify-center relative transition-transform ring-4 ring-emerald-400/20"
-          title="Chame no WhatsApp agora!"
-        >
-          <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-25"></span>
-          <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current stroke-none">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.502 5.282 3.501 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.1 1.45 4.88 1.45a9.77 9.77 0 0 0 9.78-9.76 9.79 9.79 0 0 0-9.77-9.78C6.18 1.054 1.15 6.084 1.15 12.2a9.7 9.7 0 0 0 1.48 5.16l-.97 3.56 3.65-.96c1.78.93 2.92.83 4.31.25zm11.23-5.39c-.31-.15-1.82-.9-2.1-.11-.27-.1-.47-.42-.69-.7-.22-.27-.58-.81-.58-.81s-.31-.38-.36-.45c-.17-.23-.08-.43.1-.63.1-.11.23-.27.35-.41.11-.14.15-.24.23-.4.08-.16.04-.31-.02-.45-.06-.14-.58-1.41-.8-1.92-.21-.52-.43-.45-.58-.45-.15-.01-.33-.01-.51-.01-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.11 2.82.14.18 1.93 2.94 4.67 4.13.65.28 1.16.45 1.56.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.18.16-1.29-.07-.11-.26-.26-.57-.41z" />
-          </svg>
-          <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-red-500 border-2 border-white rounded-full flex items-center justify-center">
-            <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
-          </span>
-        </button>
-      </div>
+      <CymarChat />
 
       {/* Floating Cart button (only on home and not in admin) */}
       {location.pathname !== '/loja' && (

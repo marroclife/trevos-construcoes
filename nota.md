@@ -38,6 +38,8 @@ O projeto foi reposicionado para atender cinco frentes:
 - Lista sugerida de preparação, materiais, quantidades e alertas.
 - Simulação de cor usando a API de edição de imagens da OpenAI.
 - Personagem original da CYMAR salva em `public/cymar-assistant.png`.
+- O antigo botão flutuante do WhatsApp foi substituído pela CYMAR, com conversa dentro do site, perguntas rápidas, histórico recente e encaminhamento opcional para vendedor.
+- O chat da CYMAR também direciona para a análise completa de fotografias e mantém avisos para situações que exigem avaliação profissional presencial.
 - Hero reorganizado para loja, empresas/governo, consultoria e CYMAR.
 - Suporte para três fotografias reais no hero por variáveis de ambiente.
 - CMS e proposta comercial de desenvolvimento retirados da navegação pública.
@@ -52,6 +54,7 @@ GOOGLE_PLACES_API_KEY=
 GOOGLE_PLACE_ID=
 OPENAI_API_KEY=
 OPENAI_VISION_MODEL=gpt-4.1-mini
+OPENAI_CHAT_MODEL=gpt-4.1-mini
 OPENAI_IMAGE_MODEL=gpt-image-2
 ```
 
