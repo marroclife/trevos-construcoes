@@ -89,7 +89,7 @@ export default function CymarChat() {
         >
           <header className="flex items-center gap-3 bg-green-950 px-4 py-3.5 text-white">
             <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-[#d6b15e] bg-white">
-              <img src="/cymar-assistant.png" alt="CYMAR" className="h-full w-full object-cover object-[50%_16%] scale-[1.65]" />
+              <img src="/cymar-assistant.png" alt="CYMAR" className="h-full w-full origin-[52%_20%] scale-[1.85] object-cover object-top" />
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5 font-bold"><Sparkles className="h-4 w-4 text-[#d6b15e]" /> CYMAR</div>
@@ -165,7 +165,7 @@ export default function CymarChat() {
         className={`group relative ml-auto flex h-16 items-center rounded-full border border-[#d6b15e]/70 bg-[#fffdf8] shadow-2xl shadow-green-950/30 transition hover:-translate-y-1 hover:shadow-green-950/40 focus:outline-none focus:ring-4 focus:ring-[#d6b15e]/30 ${isOpen ? 'w-16 justify-center overflow-hidden border-[3px]' : 'w-16 justify-center p-1 sm:w-[236px] sm:justify-start sm:gap-3 sm:pr-5'}`}
       >
         <span className={`${isOpen ? 'h-full w-full' : 'h-14 w-14'} relative shrink-0 overflow-hidden rounded-full border-2 border-[#d6b15e] bg-white`}>
-          <img src="/cymar-assistant.png" alt="" className="h-full w-full object-cover object-[50%_16%] scale-[1.6]" />
+          <img src="/cymar-assistant.png" alt="" className="h-full w-full origin-[52%_20%] scale-[1.85] object-cover object-top" />
           <span className="absolute bottom-0 right-0 flex h-4 w-4 items-center justify-center rounded-full border-2 border-white bg-emerald-500">
             <MessageCircle className="h-2.5 w-2.5 text-white" />
           </span>

@@ -106,8 +106,8 @@ export default function Header({ cartCount, onOpenCart, onOpenHistory, onOpenAut
       </div>
 
       <nav className="mx-auto flex h-[76px] max-w-[1440px] items-center gap-5 px-4 sm:px-6 lg:px-8" id="header-navigation">
-        <Link to="/" className="shrink-0 rounded-2xl bg-[#fffdf8] px-3 py-1.5 shadow-sm transition-transform hover:scale-[1.02]">
-          <Logo variant="dark" className="[&_img]:h-12" />
+        <Link to="/" className="shrink-0 px-1 py-1 transition-transform hover:scale-[1.02]">
+          <Logo variant="light" className="[&_img]:h-12 sm:[&_img]:h-14" />
         </Link>
 
         {/* Desktop Nav Links */}
