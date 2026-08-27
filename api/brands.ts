@@ -27,17 +27,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const prisma = getPrisma();
   try {
     if (req.method === 'GET') {
-      const brands = await prisma.brand.findMany({
-        orderBy: { name: 'asc' },
-      });
+      const brands = await prisma.brand.findMany({ orderBy: { name: 'asc' } });
       return res.status(200).json({ brands });
     }
 
     if (req.method === 'POST') {
       const { name } = req.body;
-      const brand = await prisma.brand.create({
-        data: { name },
-      });
+      const brand = await prisma.brand.create({ data: { name } });
       return res.status(201).json({ brand });
     }
 

@@ -94,7 +94,7 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onOrderSucce
     if (step !== 2 || paymentMethod !== 'pix' || !orderId || pixPaid || gatewayDisabled) return;
     const interval = setInterval(async () => {
       try {
-        const res = await fetch(`/api/orders/${orderId}`);
+        const res = await fetch(`/api/orders?id=${orderId}`);
         if (!res.ok) return;
         const data = await res.json();
         if (data.order?.paymentStatus === 'APPROVED') {

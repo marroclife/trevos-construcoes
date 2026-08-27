@@ -91,7 +91,7 @@ export async function createProduct(part: PartItem): Promise<PartItem> {
 }
 
 export async function updateProduct(part: PartItem): Promise<PartItem> {
-  const res = await fetch(`${API_BASE}/products/${part.id}`, {
+  const res = await fetch(`${API_BASE}/products?id=${part.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(mapPartItemToApiBody(part)),
@@ -104,7 +104,7 @@ export async function updateProduct(part: PartItem): Promise<PartItem> {
 }
 
 export async function deleteProduct(id: string): Promise<void> {
-  const res = await fetch(`${API_BASE}/products/${id}`, {
+  const res = await fetch(`${API_BASE}/products?id=${id}`, {
     method: 'DELETE',
   });
   if (!res.ok) {

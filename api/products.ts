@@ -25,19 +25,22 @@ function getPrisma(): PrismaClient {
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const prisma = getPrisma();
+  const { id } = req.query;
+
   try {
     if (req.method === 'GET') {
-      const { category, brand, visible, search } = req.query;
+      if (id) {
+        const product = await prisma.product.findUnique({ where: { id: String(id) } });
+        if (!product) return res.status(404).json({ error: 'Product not found' });
+        return res.status(200).json({ product });
+      }
 
+      const { category, brand, visible, search } = req.query;
       const products = await prisma.product.findMany({
         where: {
           isVisible: visible === 'false' ? false : true,
           ...(category && { category: String(category) }),
-          ...(brand && {
-            compatibleBrands: {
-              has: String(brand),
-            },
-          }),
+          ...(brand && { compatibleBrands: { has: String(brand) } }),
           ...(search && {
             OR: [
               { name: { contains: String(search), mode: 'insensitive' } },
@@ -49,7 +52,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         },
         orderBy: { createdAt: 'desc' },
       });
-
       return res.status(200).json({ products });
     }
 
@@ -71,6 +73,34 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         },
       });
       return res.status(201).json({ product });
+    }
+
+    if (req.method === 'PUT') {
+      if (!id) return res.status(400).json({ error: 'id is required' });
+      const body = req.body;
+      const product = await prisma.product.update({
+        where: { id: String(id) },
+        data: {
+          name: body.name,
+          description: body.description,
+          category: body.category,
+          subcategory: body.subcategory,
+          code: body.code,
+          price: body.price,
+          stock: body.stock,
+          compatibleBrands: body.compatibleBrands,
+          imageUrl: body.imageUrl,
+          isVisible: body.isVisible,
+          featured: body.featured,
+        },
+      });
+      return res.status(200).json({ product });
+    }
+
+    if (req.method === 'DELETE') {
+      if (!id) return res.status(400).json({ error: 'id is required' });
+      await prisma.product.delete({ where: { id: String(id) } });
+      return res.status(204).end();
     }
 
     return res.status(405).json({ error: 'Method not allowed' });
